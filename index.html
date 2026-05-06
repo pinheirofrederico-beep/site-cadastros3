@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Acesso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="title">Login</h2>
+        <form action="processar.php" method="POST">
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <input type="hidden" name="tipo_acao" id="tipo_acao" value="login">
+            <button type="submit" id="btn-submit">Entrar</button>
+        </form>
+        <p class="toggle" onclick="alternar()">Não tem conta? Cadastre-se</p>
+    </div>
 
+    <script>
+        function alternar() {
+            const title = document.getElementById('title'), btn = document.getElementById('btn-submit'),
+                  acao = document.getElementById('tipo_acao'), toggleText = document.querySelector('.toggle');
+            const isLogin = acao.value === 'login';
+            title.innerText = isLogin ? 'Cadastro' : 'Login';
+            btn.innerText = isLogin ? 'Cadastrar' : 'Entrar';
+            acao.value = isLogin ? 'cadastro' : 'login';
+            toggleText.innerText = isLogin ? 'Já tem conta? Login' : 'Não tem conta? Cadastre-se';
+        }
+    </script>
+</body>
+</html>
